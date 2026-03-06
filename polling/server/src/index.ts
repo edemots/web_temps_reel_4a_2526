@@ -8,6 +8,7 @@ type Message = {
 };
 
 const messages: Message[] = [];
+const pendingResponses: ((message: Message) => void)[] = [];
 
 const app = new Hono();
 app.use(
@@ -29,8 +30,33 @@ app.post("/messages", async (c) => {
 
   messages.push(message);
 
+  pendingResponses.forEach(async (res, index) => {
+    res(message);
+    delete pendingResponses[index];
+  });
+
   c.status(201);
   return c.json(message);
+});
+
+app.get("/messages/subscribe", (c) => {
+  c.header("Connection", "Keep-Alive");
+  c.header("Keep-Alive", "timeout=60, max=1000");
+
+  return new Promise<Response>((resolve) => {
+    setTimeout(() => {
+      resolve(
+        new Response(null, {
+          status: 204,
+        }),
+      );
+    }, 60_000);
+
+    const messageSent = (message: Message) => {
+      resolve(new Response(JSON.stringify(message)));
+    };
+    pendingResponses.push(messageSent);
+  });
 });
 
 serve(
