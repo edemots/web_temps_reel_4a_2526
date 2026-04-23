@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="./messages.js" defer></script>
+        <title>Messagerie en SSE</title>
+    </head>
+    <body>
+        <form id="message-form">
+            <input
+                type="text"
+                name="message"
+                required
+                placeholder="Entrez votre message"
+            />
+
+            <button type="submit">Publier</button>
+        </form>
+
+        <template id="message-template">
+            <li><p></p></li>
+        </template>
+        <ul id="messages"></ul>
+    </body>
+</html>
