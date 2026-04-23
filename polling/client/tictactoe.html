@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="./tictactoe.js" defer></script>
+        <title>Morpion</title>
+    </head>
+    <body>
+        <h1>Morpion</h1>
+
+        <form id="username-form" style="display: none">
+            <label for="pseudo">Pseudo</label>
+            <input type="text" name="username" id="pseudo" />
+            <button>Jouer</button>
+        </form>
+
+        <div id="rooms" style="display: none">
+            <button id="lobby-logout-btn" type="button">Déconnexion</button>
+
+            <form id="create-room">
+                <button>Créer une partie</button>
+            </form>
+            <p id="lobby-status"></p>
+            <template id="room-item-template">
+                <li>
+                    <p></p>
+                    <ul></ul>
+                    <button type="button">Rejoindre</button>
+                </li>
+            </template>
+            <template id="player-item-template">
+                <li></li>
+            </template>
+            <ul id="rooms-list"></ul>
+        </div>
+
+        <div id="playground" style="display: none">
+            <button id="room-logout-btn" type="button">Déconnexion</button>
+            <button id="leave-room-btn" type="button">Quitter la partie</button>
+
+            <h2 id="room-code"></h2>
+            <p id="room-side"></p>
+            <p id="room-status"></p>
+            <ul id="room-players"></ul>
+
+            <table style="border-collapse: collapse" id="tictactoe-grid">
+                <tr>
+                    <td
+                        style="
+                            border: 1px solid #000;
+                            width: 48px;
+                            height: 48px;
+                            text-align: center;
+                            font-size: 20px;
+                        "
+                        data-row="0"
+                        data-col="0"
+                    ></td>
+                    <td
+                        style="
+                            border: 1px solid #000;
+                            width: 48px;
+                            height: 48px;
+                            text-align: center;
+                            font-size: 20px;
+                        "
+                        data-row="0"
+                        data-col="1"
+                    ></td>
+                    <td
+                        style="
+                            border: 1px solid #000;
+                            width: 48px;
+                            height: 48px;
+                            text-align: center;
+                            font-size: 20px;
+                        "
+                        data-row="0"
+                        data-col="2"
+                    ></td>
+                </tr>
+                <tr>
+                    <td
+                        style="
+                            border: 1px solid #000;
+                            width: 48px;
+                            height: 48px;
+                            text-align: center;
+                            font-size: 20px;
+                        "
+                        data-row="1"
+                        data-col="0"
+                    ></td>
+                    <td
+                        style="
+                            border: 1px solid #000;
+                            width: 48px;
+                            height: 48px;
+                            text-align: center;
+                            font-size: 20px;
+                        "
+                        data-row="1"
+                        data-col="1"
+                    ></td>
+                    <td
+                        style="
+                            border: 1px solid #000;
+                            width: 48px;
+                            height: 48px;
+                            text-align: center;
+                            font-size: 20px;
+                        "
+                        data-row="1"
+                        data-col="2"
+                    ></td>
+                </tr>
+                <tr>
+                    <td
+                        style="
+                            border: 1px solid #000;
+                            width: 48px;
+                            height: 48px;
+                            text-align: center;
+                            font-size: 20px;
+                        "
+                        data-row="2"
+                        data-col="0"
+                    ></td>
+                    <td
+                        style="
+                            border: 1px solid #000;
+                            width: 48px;
+                            height: 48px;
+                            text-align: center;
+                            font-size: 20px;
+                        "
+                        data-row="2"
+                        data-col="1"
+                    ></td>
+                    <td
+                        style="
+                            border: 1px solid #000;
+                            width: 48px;
+                            height: 48px;
+                            text-align: center;
+                            font-size: 20px;
+                        "
+                        data-row="2"
+                        data-col="2"
+                    ></td>
+                </tr>
+            </table>
+
+            <button id="replay-btn" type="button" hidden>Rejouer</button>
+        </div>
+    </body>
+</html>

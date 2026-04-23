@@ -1,6 +1,7 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { tictactoe } from "./tictactoe.js";
 
 type Message = {
   id: number;
@@ -58,6 +59,8 @@ app.get("/messages/subscribe", (c) => {
     pendingResponses.push(messageSent);
   });
 });
+
+app.route("/", tictactoe);
 
 serve(
   {
