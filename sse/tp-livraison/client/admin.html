@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin livraison</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      form,
+      .actions {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      input,
+      select,
+      button {
+        padding: 10px;
+        font-size: 1rem;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+    </style>
+
+    <script src="admin.js" defer></script>
+  </head>
+  <body>
+    <h1>Admin — livraison</h1>
+
+    <form id="state-form">
+      <select name="status">
+        <option value="confirmed">Commande confirmée</option>
+        <option value="preparing">En préparation</option>
+        <option value="outForDelivery">En cours de livraison</option>
+        <option value="delivered">Livré</option>
+      </select>
+
+      <input type="datetime-local" name="eta" placeholder="Nouvel ETA" />
+
+      <button type="submit">Mettre à jour l’état</button>
+    </form>
+
+    <form id="incident-form">
+      <input
+        type="text"
+        name="message"
+        placeholder="Incident à envoyer"
+        required
+      />
+      <button type="submit">Envoyer un incident</button>
+    </form>
+  </body>
+</html>
